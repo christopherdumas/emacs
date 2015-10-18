@@ -1,0 +1,40 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/christopherdumas/" . ".emacs.d/")
+ ("/Users/" . "christopherdumas/")
+ ("/" . "Users/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/christopherdumas/scmnn/"
+ "/Users/christopherdumas/TRAL/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "util.rkt"
+ "test.rkt"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/christopherdumas/scmnn/" (22021 56019 0 0) "util.rkt~" "util.rkt" "README.md" "nn.rkt~" "nn.rkt" "err.rkt" "compiled/" ".git/" "../" "./")
+
+ ("/Users/christopherdumas/.emacs.d/" (21996 30424 0 0) "julia/" "init.el~" "init.el" "ido.last~" "ido.last" "haskell/" "geiser-history.racket" "elpa/" "bookmarks" "auto-save-list/" "ac-comphist.dat" "abbrev_defs" "\\" "1" "../" "./")
+
+ ("/Users/christopherdumas/" (21995 40862 0 0) "TRAL/" "test.rs~" "test.rs" "test" "share/" "rust-speller/" "rust/" "Public/" "powerline-shell.py" "powerline-shell/" "Pictures/" "Music/" "Movies/" "Library/" "install-binutils.sh" "Downloads/" "dotfiles/" "Documents/" "Desktop/" "cop2.hs~" "cop2.hs" "bin/" "Applications/" ".zshrc" ".zlogin" ".Xauthority" ".wine/" ".vimrc.swo" ".vimrc" ".viminfo" ".vim/" ".Trash/" ".tmux.conf" ".tmux/" ".subversion/" ".ssh/" ".rvm/" ".rnd" ".pry_history" ".profile" ".nvimrc" ".nvimlog" ".nviminfo" ".nvim/" ".npm/" ".mkshrc" ".local/" ".lesshst" ".lci_history" ".julia_history" ".jhistory" ".inputrc" ".idlerc/" ".gitignore_global" ".gitconfig" ".git-prompt.sh" ".ghc/" ".gem/" ".emacs.d/" ".DS_Store" ".config/" ".CFUserTextEncoding" ".cargo/" ".cache/" ".cabal/" ".bashrc" ".bash_profile" ".bash_eternal_history" ".atom/" "../" "./")
+
+ ("/Users/christopherdumas/rust-speller/" (21996 29865 0 0) "target/" "src/" "dictionary.txt~" "dictionary.txt" "Cargo.toml" "Cargo.lock" ".gitignore" ".git/" "../" "./")
+
+ ("/Users/christopherdumas/rust-speller/src/" (21996 29891 0 0) "main.rs" "../" "./")
+
+ ("/Users/christopherdumas/TRAL/" (21961 6704 0 0) "tral.rkt" "test.rkt" "compiled/" ".git/" "../" "./")
+
+ ("/Users/" (21936 59873 0 0) "Shared/" "christopherdumas/" ".localized" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

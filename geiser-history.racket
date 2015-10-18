@@ -1,0 +1,85 @@
+,enter "tral.rkt"
+}{
+assert
+}{
+(define/contract (action . lst))
+}{
+(define/contract (action . lst)
+		   (-> (list list? procedure?))
+		   lst)
+}{
+,enter ""
+}{
+,enter "inventory.rkt"
+}{
+,enter "tral.rkt"
+}{
+(define i (new-inventory "backpack"))
+}{
+(room "foo" "bar" '("lamp"))
+}{
+room-objs
+}{
+(pickup '() "foo" "lamp")
+}{
+,enter "tral.rkt"
+}{
+(pickup '() "foo" "lamp")
+}{
+,enter "tral.rkt"
+}{
+room-objs
+}{
+(room (title "foo") (desc "bar") '("lamp"))
+}{
+(pickup '() "")
+}{
+(pickup '() "foo" "lamp")
+}{
+(hash-ref room-objs "foo")
+}{
+room-objs
+}{
+,enter "tral.rkt"
+}{
+(room (title "foo") (desc "bar") '("lamp"))
+}{
+(pickup '() "foo" "lamp")
+}{
+room-objs
+}{
+,enter "tral.rkt"
+}{
+(thing "lamp" "foo")
+}{
+(thing "sword" "foo" (thing "lantern" "foo"))
+}{
+,enter "tral.rkt"
+}{
+(things '("sword" "lantern") "foo")
+}{
+(hash-map (hash "a" 1 "b" 2 "c" 3) (lambda (k v)))
+}{
+,enter "tral.rkt"
+}{
+(hash-extend (hash "a" 1 "b" 2) (hash "c" 3))
+}{
+(place-things)
+}{
+(place-things (hash "foo" '(1 2 3)) (hash "bar" '(1 2 3)) (hash "baz" '(1 2 3)))
+}{
+(place-things
+		  (things '("lantern" "sword") "foo")
+		  (things '("egg") "bar"))
+}{
+(define (rfoo))
+}{
+(define (rfoo)
+		   foo)
+}{
+(rfoo)
+}{
+(define foo 1)
+}{
+(rfoo)
+}{
