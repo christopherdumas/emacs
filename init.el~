@@ -1,8 +1,10 @@
 (require 'package)
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-			 ("milkbox" . "http://melpa.milkbox.net/packages/")
-			 ("org" . "http://orgmode.org/elpa/")
-			 ("gnu" . "http://elpa.gnu.org/packages/")))
+(setq-default indent-tabs-mode nil)
+(setq package-archives '(("milkbox" . "http://melpa.milkbox.net/packages/")
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("org" . "http://orgmode.org/elpa/")
+                         ("melpa-stable", "http://stable.melpa.org/packages/")
+                         ("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
 (require 'evil)
@@ -29,56 +31,7 @@
   '(add-to-list 'ac-modes 'geiser-repl-mode))
 
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#3F3F3F" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
- '(custom-safe-themes
-   (quote
-    ("a444b2e10bedc64e4c7f312a737271f9a2f2542c67caa13b04d525196562bf38" "9122dfb203945f6e84b0de66d11a97de6c9edf28b3b5db772472e4beccc6b3c5" "a2e7b508533d46b701ad3b055e7c708323fb110b6676a8be458a758dd8f24e27" default)))
- '(fci-rule-color "#383838")
- '(package-archives
-   (quote
-    (("melpa" . "http://melpa.milkbox.net/packages/")
-     ("org" . "http://orgmode.org/elpa/")
-     ("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa-stable" . "http://stable.melpa.org/packages/"))))
- '(show-paren-mode t)
- '(vc-annotate-background "#2B2B2B")
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#BC8383")
-     (40 . "#CC9393")
-     (60 . "#DFAF8F")
-     (80 . "#D0BF8F")
-     (100 . "#E0CF9F")
-     (120 . "#F0DFAF")
-     (140 . "#5F7F5F")
-     (160 . "#7F9F7F")
-     (180 . "#8FB28F")
-     (200 . "#9FC59F")
-     (220 . "#AFD8AF")
-     (240 . "#BFEBBF")
-     (260 . "#93E0E3")
-     (280 . "#6CA0A3")
-     (300 . "#7CB8BB")
-     (320 . "#8CD0D3")
-     (340 . "#94BFF3")
-     (360 . "#DC8CC3"))))
- '(vc-annotate-very-old-color "#DC8CC3"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#1d1d1d" :foreground "#DCDCCC" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 1 :width normal :foundry "default" :family "default"))))
- '(flymake-errline ((((class color)) (:underline "red"))))
- '(flymake-warnline ((((class color)) (:underline "yellow")))))
-
-(load-theme 'zenburn t)
+(load-theme 'leuven t)
 
 (require 'fill-column-indicator)
 (setq fci-rule-column 80)
@@ -122,11 +75,6 @@
 
 (setq auto-save-default nil)
 
-(add-to-list 'load-path "/Applications/factor/misc/fuel")
-(require 'factor-mode)
-(require 'fuel-mode)
-(setq fuel-factor-root-dir "/Applications/factor")
-
 (add-to-list 'load-path "/Users/christopherdumas/.emacs.d/julia")
 (require 'julia-mode)
 
@@ -141,19 +89,19 @@
   deletes file. Put this file path (and run `chmod a+x hslint`)
   to enable hslint: https://gist.github.com/1241073"
   (let* ((temp-file   (flymake-init-create-temp-buffer-copy
-		       'flymake-create-temp-inplace))
-	 (local-file  (file-relative-name
-		       temp-file
-		       (file-name-directory buffer-file-name))))
+                       'flymake-create-temp-inplace))
+         (local-file  (file-relative-name
+                       temp-file
+                       (file-name-directory buffer-file-name))))
     (list "hslint" (list local-file))))
 
 (defun flymake-haskell-enable ()
   "Enables flymake-mode for haskell, and sets <C-c d> as command
   to show current error."
   (when (and buffer-file-name
-	     (file-writable-p
-	      (file-name-directory buffer-file-name))
-	     (file-writable-p buffer-file-name))
+             (file-writable-p
+              (file-name-directory buffer-file-name))
+             (file-writable-p buffer-file-name))
     (local-set-key (kbd "C-c d") 'flymake-display-err-menu-for-current-line)
     (flymake-mode t)))
 
@@ -193,10 +141,32 @@
 
 ;; And set it to the shortcut C-c C-v
 (add-hook 'rust-mode-hook
-	  (lambda ()
-	    (flymake-mode t)
-	    (global-set-key "\C-c\C-v" 'my-flymake-show-next-error)))
+          (lambda ()
+            (flymake-mode t)
+            (global-set-key "\C-c\C-v" 'my-flymake-show-next-error)))
 
+
+
+(load "/Users/christopherdumas/.opam/4.02.1/share/emacs/site-lisp/tuareg-site-file")
+(push "/Users/christopherdumas/.opam/4.02.1/share/emacs/site-lisp/" load-path)
+(require 'utop)
+
+
+(require 'merlin)
+(add-hook 'tuareg-mode-hook 'merlin-mode)
+(add-hook 'caml-mode-hook 'merlin-mode)
+(setq merlin-ac-setup t)
 (custom-set-variables
- '(help-at-pt-timer-delay 0.9)
-      '(help-at-pt-display-when-idle '(flymake-overlay)))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("8b313e1793da427e90c034dbe74f3ad9092ac291846c0f855908c42a6bda1ff4" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
